@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        SLACK_CHANNEL = '#jenkins'
+        SLACK_CHANNEL = '#test_notification'
     }
 
     stages {
@@ -22,11 +22,12 @@ pipeline {
             steps {
                 nodejs(nodeJSInstallationName: 'nodejs'){
                 sh 'npm install'
-                sh 'npm run build'
+                sh 'npm run'
                 }
             }
         }
     }
+
     post {
         success {
             slackSend (channel: SLACK_CHANNEL, color: '#00FF00', message: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
