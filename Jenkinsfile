@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        SLACK_CHANNEL = '#test_notification'
+        SLACK_CHANNEL = '#jenkins'
     }
 
     stages {
